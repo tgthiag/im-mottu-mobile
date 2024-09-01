@@ -12,7 +12,7 @@ class MarvelApiService {
   final String _baseUrl = 'https://gateway.marvel.com:443/v1/public';
   final GetStorage _storage = GetStorage();
 
-  String _generateHash(int timestamp) {
+  String generateHash(int timestamp) {
     return md5
         .convert(utf8.encode('$timestamp$_privateKey$_publicKey'))
         .toString();
@@ -20,9 +20,8 @@ class MarvelApiService {
 
   Future<void> fetchAndStoreCharacters({String? searchText}) async {
     final int timestamp = DateTime.now().millisecondsSinceEpoch;
-    final String hash = _generateHash(timestamp);
+    final String hash = generateHash(timestamp);
 
-    // Base URL with required parameters
     String url =
         '$_baseUrl/characters?ts=$timestamp&apikey=$_publicKey&hash=$hash&limit=40';
 
@@ -38,10 +37,20 @@ class MarvelApiService {
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final characters = data['data']['results'];
+
+      final filteredCharacters = characters.where((character) {
+        return character['thumbnail'] != null &&
+            character['thumbnail']['path'] != null &&
+            character['thumbnail']['extension'] != null &&
+            character['thumbnail']['path'] !=
+                'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available';
+      }).toList();
+
       if (kDebugMode) {
-        print("chars $characters");
+        print("Filtered characters: $filteredCharacters");
       }
-      _storage.write('characters', json.encode(characters));
+
+      _storage.write('characters', json.encode(filteredCharacters));
     } else {
       throw Exception('Failed to load characters');
     }
