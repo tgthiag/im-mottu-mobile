@@ -74,4 +74,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'igdb-api-66740.appspot.com',
     iosBundleId: 'com.mottu.marvel.mottuMobileMarvel',
   );
+
 }
