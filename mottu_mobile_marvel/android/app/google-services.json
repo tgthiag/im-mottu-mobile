@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "679449850142",
+    "firebase_url": "https://igdb-api-66740-default-rtdb.firebaseio.com",
+    "project_id": "igdb-api-66740",
+    "storage_bucket": "igdb-api-66740.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679449850142:android:20af93fa63e3a38d9e590f",
+        "android_client_info": {
+          "package_name": "com.mottu.marvel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679449850142-p6p4on8sv8flfc4o8bl1pob7p3f78t85.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqiVC9vxFBkVckTGZNHp8YhmdepNFeadQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679449850142-p6p4on8sv8flfc4o8bl1pob7p3f78t85.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
